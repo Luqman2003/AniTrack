@@ -1,4 +1,4 @@
-package Service;
+package com.example.anitrack.Service;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -18,6 +18,7 @@ public class JikanService {
     }
 
     public String getAnimeDetails(String id) {
+        System.out.println(id);
         String url = UriComponentsBuilder.fromHttpUrl(apiUrl).pathSegment("anime", id)
                 .toUriString();
         return restTemplate.getForObject(url, String.class);

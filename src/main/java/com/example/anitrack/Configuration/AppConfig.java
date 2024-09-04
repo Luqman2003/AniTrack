@@ -1,4 +1,4 @@
-package Configuration;
+package com.example.anitrack.Configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
