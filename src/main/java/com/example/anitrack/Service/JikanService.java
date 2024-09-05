@@ -53,4 +53,16 @@ public class JikanService {
                 .toUriString();
         return restTemplate.getForObject(url, String.class);
     }
+
+    /**
+     * makes a call to the jikan API under the /anime/{id}/episodes endpoint
+     * @param id - the id of the anime
+     * @return String - the string format of the response
+     */
+    public String getAnimeEpisodes(String id) {
+        String url = UriComponentsBuilder.fromHttpUrl(apiUrl)
+                .pathSegment("anime", id, "episodes")
+                .toUriString();
+        return restTemplate.getForObject(url, String.class);
+    }
 }

@@ -31,4 +31,9 @@ public class AnimeController {
     public String getAnimeCharacters(@PathVariable String id) {
         return jikanService.getAnimeCharacters(id);
     }
+
+    @GetMapping("/{id}/episodes")
+    public String getAnimeEpisodes(@PathVariable String id) {
+        return jikanService.getAnimeEpisodes(id);
+    }
 }
