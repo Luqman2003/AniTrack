@@ -6,14 +6,14 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
 @Service
-public class JikanService {
+public class JikanAnimeService {
 
     private final RestTemplate restTemplate;
 
     @Value("${jikan.api.url}")
     private String apiUrl;
 
-    public JikanService(RestTemplate restTemplate) {
+    public JikanAnimeService(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
     }
 
@@ -62,6 +62,17 @@ public class JikanService {
     public String getAnimeEpisodes(String id) {
         String url = UriComponentsBuilder.fromHttpUrl(apiUrl)
                 .pathSegment("anime", id, "episodes")
+                .toUriString();
+        return restTemplate.getForObject(url, String.class);
+    }
+
+    /**
+     *
+     * @param id
+     * @return
+     */
+    public String getAnimePictures(String id) {
+        String url = UriComponentsBuilder.fromHttpUrl(apiUrl).pathSegment("anime", id, "pictures")
                 .toUriString();
         return restTemplate.getForObject(url, String.class);
     }

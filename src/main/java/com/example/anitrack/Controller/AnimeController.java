@@ -1,6 +1,6 @@
 package com.example.anitrack.Controller;
 
-import com.example.anitrack.Service.JikanService;
+import com.example.anitrack.Service.JikanAnimeService;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,33 +12,39 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RestController
 @RequestMapping("/anime")
 public class AnimeController {
-    private final JikanService jikanService;
+    private final JikanAnimeService jikanAnimeService;
 
-    public AnimeController(JikanService jikanService) {
-        this.jikanService = jikanService;
+    public AnimeController(JikanAnimeService jikanAnimeService) {
+        this.jikanAnimeService = jikanAnimeService;
     }
 
     @GetMapping("/{id}")
     @CrossOrigin(origins = "http://localhost:3000")
     public String getAnimeById(@PathVariable String id) {
-        return jikanService.getAnimeDetails(id);
+        return jikanAnimeService.getAnimeDetails(id);
     }
 
     @GetMapping("/search")
     @CrossOrigin(origins = "http://localhost:3000")
     public String getAnimeBySearch(@RequestParam String name) {
-        return jikanService.getAnimeBySearch(name);
+        return jikanAnimeService.getAnimeBySearch(name);
     }
 
     @GetMapping("/{id}/characters")
     @CrossOrigin(origins = "http://localhost:3000")
     public String getAnimeCharacters(@PathVariable String id) {
-        return jikanService.getAnimeCharacters(id);
+        return jikanAnimeService.getAnimeCharacters(id);
     }
 
     @GetMapping("/{id}/episodes")
     @CrossOrigin(origins = "http://localhost:3000")
     public String getAnimeEpisodes(@PathVariable String id) {
-        return jikanService.getAnimeEpisodes(id);
+        return jikanAnimeService.getAnimeEpisodes(id);
+    }
+
+    @GetMapping("/{id}/pictures")
+    @CrossOrigin(origins = "http://localhost:3000")
+    public String getAnimePictures(@PathVariable String id) {
+        return jikanAnimeService.getAnimePictures(id);
     }
 }
